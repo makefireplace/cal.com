@@ -60,6 +60,11 @@ def write_to_env_file(config: dict, env_file: str, example_env_file: str) -> Non
     print("Success")
 
 
+def write_to_env_appstore_file(env_file: str, example_env_file: str) -> None:
+    shutil.copy2(example_env_file, env_file)
+    print("Success")
+
+
 if __name__ == "__main__":
     env_type = input("Enter environment (dev or prod): ")
 
@@ -70,11 +75,11 @@ if __name__ == "__main__":
         os.path.dirname(os.path.realpath(__file__)) + "/../../.env.example"
     )
     write_to_env_file(config, env_file, example_env_file)
-    
+
     env_appstore_file = (
         os.path.dirname(os.path.realpath(__file__)) + "/../../.env.appStore"
     )
     example_env_appstore_file = (
         os.path.dirname(os.path.realpath(__file__)) + "/../../.env.appStore.example"
     )
-    write_to_env_file(config, env_appstore_file, example_env_appstore_file)
+    write_to_env_appstore_file(env_appstore_file, example_env_appstore_file)
